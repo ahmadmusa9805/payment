@@ -1,22 +1,19 @@
+import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { io } from 'socket.io-client';
 
-// const generateUniqueId = (prefix) => {
-//     const randomPart = Math.floor(Math.random() * 10000); 
-//     const timestamp = Date.now(); 
-//     return `${prefix}-${timestamp}-${randomPart}`;
-// };
-const adminSocket = io('http://localhost:5000/actor-admin-chat'); // Using ref
+const adminSocket = io('http://localhost:5000/actor-admin-chat'); 
 
 // eslint-disable-next-line react/prop-types
 const ChatAdminToActor = ({ userRole }) => {
     const [message, setMessage] = useState('');
-    const [messages, setMessages] = useState([]);
+    const [messages, setMessages] = useState([]); 
+
 
     const actorId = "actor12345";
     const adminId = "admin12345";
-    // const actorId = generateUniqueId('actor');
-    // const adminId = generateUniqueId('admin');
+    const room = `${actorId}-${adminId}`;
+
 
     const senderId = userRole === 'admin' ? adminId : actorId;
     const receiverId = userRole === 'admin' ? actorId : adminId;
@@ -24,36 +21,39 @@ const ChatAdminToActor = ({ userRole }) => {
 
     const fetchChatHistory = async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/chat/history?actorId=${actorId}&adminId=${adminId}`);
-            setMessages(response.data);
+            const response = await axios.get(`/api/v1/chats/messages?room=${room}`);
+            console.log('API Response:=========', response.data);
+            if (response.data && response.data.messages) {
+                setMessages(response.data);
+            } else {
+                console.error('No messages found in the response');
+            }
+
         } catch (error) {
             console.error('Error fetching chat history:', error);
         }
     };
-
-
     useEffect(() => {
 
         fetchChatHistory();
 
-        const room = `${actorId}-${adminId}`;
-        console.log(`Joining Room: ${room}`);
-        
-        adminSocket.emit('joinRoom', { actorId, adminId });
+        adminSocket.emit('joinRoom', { room });
+        console.log(`Joined room: ${room}`);
+
+
 
         adminSocket.on('newMessage', (data) => {
-            console.log(`New message from==musa ${data.sender}: ${data.message}, ${data}`);
-            setMessages((prev) => [...prev, { sender: data.sender, message: data.message }]);
+            // setMessages((prev) => [...prev, { sender: data.sender, message: data.message }]);
+            setMessages((prev) => [...prev, data]);
+
         });
 
         return () => {
             adminSocket.off('newMessage');
         };
-    }, [actorId, adminId, adminSocket]);
+    }, [room]);
 
-    const sendMessage = () => {
-        const room = `${actorId}-${adminId}`;
-        console.log(`Sending message to Room: ${room}`);
+    const sendMessage = () => {        
         
         if (adminSocket && adminSocket.connected) {
             adminSocket.emit('message', {
@@ -63,6 +63,8 @@ const ChatAdminToActor = ({ userRole }) => {
                 sender: senderId,
                 receiver: receiverId,
             });
+
+            
             setMessage(''); // Clear input
         } else {
             console.error("Socket is not connected");
@@ -85,6 +87,7 @@ const ChatAdminToActor = ({ userRole }) => {
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Enter your message"
             />
+
             <button onClick={sendMessage}>Send</button>
         </div>
     );

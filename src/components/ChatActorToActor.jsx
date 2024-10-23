@@ -28,12 +28,12 @@ const senderId = UserRole === 'admin' ? actor1 : actor2;
 const receiverId = UserRole === 'admin' ? actor2 : actor1;
 
 
-
+const room = `${actor1}-${actor2}`;
 
   
   useEffect(() => {
     
-    actorSocket.emit('joinRoom', { actor1, actor2 });
+    actorSocket.emit('joinRoom', { room });
 
     actorSocket.on('newMessage', (data) => {
         console.log(`New message from==musa ${data.sender}: ${data.message}, ${data}`);
@@ -43,13 +43,11 @@ const receiverId = UserRole === 'admin' ? actor2 : actor1;
     return () => {
       actorSocket.off('newMessage');
     };
-}, [actor1, actor2, actorSocket]);
+}, [room]);
 
 
 
   const sendMessage = () => {
-    const room = `${actor1}-${actor2}`;
-    console.log(`Sending message to Room: ${room}`);
     
     if (actorSocket && actorSocket.connected) {
       actorSocket.emit('message', {
@@ -59,7 +57,7 @@ const receiverId = UserRole === 'admin' ? actor2 : actor1;
             sender: senderId,
             receiver: receiverId,
         });
-        setMessage(''); // Clear input
+        setMessage('');
     } else {
         console.error("Socket is not connected");
     }
