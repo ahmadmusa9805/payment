@@ -26,7 +26,8 @@ const PaymentForm = () => {
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount: 5000 }), // Example: $50 in cents
+        // body: JSON.stringify({ amount: 5000 }), // Example: $50 in cents
+        body: JSON.stringify({amount: 5000, competitionId:"671898eded96907fc67016e3", actorId: '6719ec708a97224f8227b942' }),
       }
     );
     const { data: clientSecret } = await res.json();
