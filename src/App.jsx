@@ -1,5 +1,7 @@
 import "./App.css";
-import PaymentForm from "./paymentForm";
+// import PaymentForm from "./Participate.jsx";
+import Participate from './Participate.jsx'; // Default import
+// import PaymentForm from "./paymentForm";
 // import ChatActorToActor from "./components/ChatActorToActor";
 // import ChatAdminToActor from "./components/ChatAdminToActor";
 
@@ -22,7 +24,10 @@ function App() {
       <div>
         <h1>I am payment component</h1>
          {/* <h1>Stripe Payment Integration</h1> */}
-          <PaymentForm />
+          <Participate entryFee={500} competitionId={1111} />
+          {/* <Participate entryFee={500} competitionId={"6719ec708a97224f8227b942"} /> */}
+          {/* <Participate entryFee={500} competitionId={"6719ec708a97224f8227b942"} /> */}
+          {/* <PaymentForm /> */}
       </div>
     </>
   );
