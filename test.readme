@@ -1,0 +1,84 @@
+Thanks for clarifying! Let me adjust the workflow to account for this distinction.
+
+Updated Explanation and Calculation Workflow
+Understanding the Revenue Structure:
+Total Earnings: The total income generated from all entry fees across all competitions.
+Expenses:
+Prizes: The payouts for firstPrize, secondPrize, and thirdPrize for each competition.
+User Share (75%): This applies only to competitions created by users (not the admin). The user who creates a competition earns 75% of that competition’s earnings.
+2. Steps to Calculate Total Earnings:
+Calculate the total earnings from entry fees for all competitions.
+Formula: Total Earnings = Sum(entryFee × number of participants) for all competitions
+3. Steps to Calculate Total Expenses:
+Sum of Prize Payouts:
+
+Calculate the total prize payout by summing up the firstPrize, secondPrize, and thirdPrize for each competition.
+Formula: Total Prize Payouts = Sum(firstPrize + secondPrize + thirdPrize) for all competitions
+Sum of User Shares (75%) for User-Created Competitions:
+
+For each competition created by a user, calculate 75% of its earnings.
+Formula for user-created competitions: User Share = 75% × (entryFee × number of participants)
+Sum this amount for all user-created competitions.
+Total Expenses:
+
+Combine the total prize payouts and the user shares.
+Formula: Total Expenses = Total Prize Payouts + Sum(User Share for user-created competitions)
+4. Calculate Admin Earnings:
+Competitions created by the admin do not have the 75% share paid out; the admin keeps 100% of those earnings.
+Admin Earnings:
+Admin-created competition earnings: Total Earnings from admin-created competitions
+Formula for admin-created competitions: Admin Earnings = Entry fee × number of participants for all admin-created competitions
+5. Calculate Net Revenue:
+Combine the total earnings and total expenses to calculate the net revenue.
+Net Revenue Formula: Net Revenue = Total Earnings - Total Expenses
+6. Full Calculation Workflow:
+Collect Data:
+
+Identify the competitions created by users and those created by the admin.
+Get the entryFee, number of participants, and prize amounts for each competition.
+Calculate Total Earnings:
+
+Sum the earnings from all competitions.
+Calculate Total Prize Payouts:
+
+Sum the prize payouts for each competition.
+Calculate Total User Share:
+
+Calculate 75% of earnings only for user-created competitions and sum them.
+Calculate Admin Earnings:
+
+Sum the earnings from competitions created by the admin (100% of those earnings).
+Calculate Total Expenses:
+
+Total Expenses = Total Prize Payouts + Sum(User Share for user-created competitions)
+Calculate Net Revenue:
+
+Net Revenue = Total Earnings - Total Expenses
+Example Calculation:
+Suppose you have:
+
+Competition 1 (user-created): Entry fee = $10, 100 participants, firstPrize = $100, secondPrize = $50, thirdPrize = $30.
+Competition 2 (admin-created): Entry fee = $5, 50 participants, firstPrize = $80, secondPrize = $40, thirdPrize = $20.
+Total Earnings:
+
+Competition 1: $10 × 100 = $1,000
+Competition 2: $5 × 50 = $250
+Total Earnings = $1,000 + $250 = $1,250
+Total Prize Payouts:
+
+Competition 1: $100 + $50 + $30 = $180
+Competition 2: $80 + $40 + $20 = $140
+Total Prize Payouts = $180 + $140 = $320
+Total User Share (for user-created competitions):
+
+Competition 1: 75% × $1,000 = $750
+Total User Share = $750
+Admin Earnings:
+
+Competition 2: 100% × $250 = $250
+Total Expenses:
+
+Total Expenses = $320 (prizes) + $750 (user share) = $1,070
+Net Revenue:
+
+Net Revenue = $1,250 (earnings) - $1,070 (expenses) = $180

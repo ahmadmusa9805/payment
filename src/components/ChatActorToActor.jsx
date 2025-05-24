@@ -6,7 +6,6 @@ import { io } from 'socket.io-client';
 const actorSocket = io('http://localhost:5000/actor-actor-chat'); // For admin chat
 
 
-
 // const generateUniqueId = (prefix) => {
 //     const randomPart = Math.floor(Math.random() * 10000); 
 //     const timestamp = Date.now(); 

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { io } from 'socket.io-client';
 
-const adminSocket = io('http://localhost:5000/actor-admin-chat'); 
+const adminSocket = io('http://localhost:5000/actor-admin-chat');
 
 // eslint-disable-next-line react/prop-types
 const ChatAdminToActor = ({ userRole }) => {
