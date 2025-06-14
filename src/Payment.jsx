@@ -4,7 +4,7 @@ import CardList from './CardList';
 import PaymentProcessor from './PaymentProcessor';
 
 export default function PaymentPage() {
-  const userId = '67de6fe54f815ca7f35292ad'; // replace with actual logged-in user id
+  const userId = '6836c7f31dc335d33503407f'; // replace with actual logged-in user id
   const [selectedCard, setSelectedCard] = useState(null);
   const [cardsUpdated, setCardsUpdated] = useState(false);
 

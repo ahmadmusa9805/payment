@@ -23,15 +23,17 @@
 // export default App;
 //////////////
 import "./App.css";
-import Payment from "./payment.jsx";
+import ChatApp from "./ChatApp";
+import PaymentForm from "./components/PaymentForm";
+import PaymentPage from "./Payment";
+
 function App() {
 
   return (
     <>
-
-         <Payment></Payment>
- 
-   
+      {/* <PaymentForm></PaymentForm> */}
+      {/* <PaymentPage></PaymentPage> */}
+      <ChatApp userId="684bc809608418f7950c3573"></ChatApp>
     </>
   );
 }
